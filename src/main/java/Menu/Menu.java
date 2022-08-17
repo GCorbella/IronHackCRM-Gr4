@@ -5,6 +5,7 @@ import Classes.Lead;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -216,7 +217,4 @@ public class Menu {
         System.out.println("The registered company name is: " + companyName + "\n");
         return companyName;
     }
-
-
-
 }
