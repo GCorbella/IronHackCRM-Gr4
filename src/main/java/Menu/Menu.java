@@ -2,6 +2,7 @@ package Menu;
 
 import Classes.Account;
 import Classes.Lead;
+import Classes.Opportunity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,64 +11,43 @@ import java.util.Scanner;
 
 public class Menu {
 
-   static Scanner scanner = new Scanner(System.in);
-
-   Lead lead;
+    static Scanner scanner = new Scanner(System.in); // Scanner for commands, login message and instructions
 
     //lists
-    List<Lead> allLeads = new ArrayList<>(); //List of all the existing Leads.
-    List<Account> allAccounts = new ArrayList<>(); //List of all the existing Accounts.
+    static List<Lead> allLeads = new ArrayList<>(); //List of all the existing Leads.
+    static List<Account> allAccounts = new ArrayList<>(); //List of all the existing Accounts.
+    static List<Opportunity> allOpportunities = new ArrayList<>(); //List of all the existing Opportunities.
 
-
-    // Scanner for commands, login message and instructions
     public static void start() {
         String command;
         String actionCommand;
 
-
         //TODO List of all commands. Add all comands
-        String[] commands = new String[]{
-                "new lead",
-                "show leads",
-                "help",
-                "quit"
-        };
+        String[] commands = new String[]{"new lead", "show leads", "help", "quit"};
         
         try {
-            System.out.println("\r*** Wellcome to CRM of Group 4***");
+            System.out.println("\r*** Welcome to CRM of Group 4***");
             Thread.sleep(1000);
             System.out.println("\r***Login successful***");
             Thread.sleep(1000);
-            System.out.println("\nTo start you need ype HELP to print all commands.");
+            System.out.println("\nTo start you need to type HELP to print all commands.");
         } catch (InterruptedException e) {
             e.printStackTrace();
-           System.out.println("CRM App was interrupted");
+            System.out.println("CRM App was interrupted");
         }
-
-
 
         // Command loop: asks for valid input and assigns id to variable if necessary
         while (true) {
             System.out.println("\nPlease, type a command:");
             command = scanner.nextLine().toLowerCase();
 
-            //TODO ".*\\d.*" may o minusculas
-            if (command.matches(".*\\d.*")) {
-
-               actionCommand = command;
-            } else {
-                actionCommand = command;
-            }
-
-
-            switch (actionCommand) {
+            switch (command) {
                 case "new lead":
                     newLead();
                     break;
                 case "show leads":
-                    //showLeads();
+                    showLeads();
                     break;
-
                 case "help":
                     System.out.println("Available commands:");
                     for (String c : commands) {
@@ -96,7 +76,7 @@ public class Menu {
     }
 
     //TODO
-    void showLeads(){
+    static void showLeads(){
         System.out.println("Leads : ");
        // allLeads.forEach((n) -> System.out.println(allLeads));
         allLeads.forEach(System.out::println);
@@ -117,17 +97,15 @@ public class Menu {
         String tempPhoneNumber;
         String tempEmail;
         String tempCompanyName;
-        Lead tempLead;
 
         tempName = setName();
         tempPhoneNumber = setPhone();
         tempEmail = setEmail();
         tempCompanyName = setCompanyName();
 
-        tempLead = new Lead(tempName, tempPhoneNumber, tempEmail, tempCompanyName);
+        Lead lead = new Lead(tempName, tempPhoneNumber, tempEmail, tempCompanyName);
 
-        //Lead.addLead(tempLead);
-        //Lead.save();
+        allLeads.add(lead);
     }
 
     public static String setName() {
@@ -143,14 +121,12 @@ public class Menu {
                 System.out.println("Name must have at least 3 characters");
             } else if (name.matches(".*\\d.*")) {
                 System.out.println("Name cannot contain numbers");
-                ;
             } else if (!isThereFirstAndLastname) {
                 System.out.println("Please enter name and lastname separated by a space");
             } else {
                 break;
             }
         }
-
         System.out.println("The registered name is: " + name + "\n");
         return name;
     }
