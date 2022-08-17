@@ -28,7 +28,6 @@ public class Menu {
         String[] commands = new String[]{
                 "new lead",
                 "show leads",
-
                 "help",
                 "quit"
         };
