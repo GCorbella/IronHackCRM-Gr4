@@ -61,4 +61,6 @@ public class Lead {
     public String getCompanyName() {
         return companyName;
     }
+
 }
+
