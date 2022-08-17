@@ -41,7 +41,7 @@ public class Menu {
             System.out.println("\nTo start you need ype HELP to print all commands.");
         } catch (InterruptedException e) {
             e.printStackTrace();
-            System.out.println("CRM App was interrupted");
+           System.out.println("CRM App was interrupted");
         }
 
 
@@ -50,8 +50,6 @@ public class Menu {
         while (true) {
             System.out.println("\nPlease, type a command:");
             command = scanner.nextLine().toLowerCase();
-
-
 
             //TODO ".*\\d.*" may o minusculas
             if (command.matches(".*\\d.*")) {
