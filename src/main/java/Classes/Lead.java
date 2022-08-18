@@ -62,5 +62,9 @@ public class Lead {
         return companyName;
     }
 
+    public String toString(){
+        return getId() + "//" + getName() + "//" + getPhoneNumber() + "//" + getEmail() + "//" + getCompanyName() + ".";
+    }
+
 }
 

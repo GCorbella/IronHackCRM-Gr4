@@ -2,6 +2,7 @@ package Menu;
 
 import Classes.Account;
 import Classes.Lead;
+import Classes.Opportunity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,66 +11,44 @@ import java.util.Scanner;
 
 public class Menu {
 
-   static Scanner scanner = new Scanner(System.in);
-
-   Lead lead;
+  //Scanner scanner = new Scanner(System.in); // Scanner for commands, login message and instructions
 
     //lists
-    List<Lead> allLeads = new ArrayList<>(); //List of all the existing Leads.
-    List<Account> allAccounts = new ArrayList<>(); //List of all the existing Accounts.
+    static List<Lead> allLeads = new ArrayList<>(); //List of all the existing Leads.
+    static List<Account> allAccounts = new ArrayList<>(); //List of all the existing Accounts.
+    static List<Opportunity> allOpportunities = new ArrayList<>(); //List of all the existing Opportunities.
 
-
-    // Scanner for commands, login message and instructions
     public static void start() {
         String command;
         String actionCommand;
 
-
         //TODO List of all commands. Add all comands
-        String[] commands = new String[]{
-                "new lead",
-                "show leads",
-                "help",
-                "quit"
-        };
+        String[] commands = new String[]{"new lead", "show leads", "help", "quit"};
         
         try {
-            System.out.println("\r*** Wellcome to CRM of Group 4***");
+            System.out.println("\r*** Welcome to CRM of Group 4***");
             Thread.sleep(1000);
             System.out.println("\r***Login successful***");
             Thread.sleep(1000);
-            System.out.println("\nTo start you need ype HELP to print all commands.");
+            System.out.println("\nTo start you need to type HELP to print all commands.");
         } catch (InterruptedException e) {
             e.printStackTrace();
             System.out.println("CRM App was interrupted");
         }
 
-
-
         // Command loop: asks for valid input and assigns id to variable if necessary
         while (true) {
+            Scanner scanner = new Scanner(System.in);
             System.out.println("\nPlease, type a command:");
             command = scanner.nextLine().toLowerCase();
 
-
-
-            //TODO ".*\\d.*" may o minusculas
-            if (command.matches(".*\\d.*")) {
-
-               actionCommand = command;
-            } else {
-                actionCommand = command;
-            }
-
-
-            switch (actionCommand) {
+            switch (command) {
                 case "new lead":
                     newLead();
                     break;
                 case "show leads":
-                    //showLeads();
+                    showLeads();
                     break;
-
                 case "help":
                     System.out.println("Available commands:");
                     for (String c : commands) {
@@ -97,8 +76,8 @@ public class Menu {
 
     }
 
-    //TODO
-    void showLeads(){
+
+    public static void showLeads(){
         System.out.println("Leads : ");
        // allLeads.forEach((n) -> System.out.println(allLeads));
         allLeads.forEach(System.out::println);
@@ -119,20 +98,19 @@ public class Menu {
         String tempPhoneNumber;
         String tempEmail;
         String tempCompanyName;
-        Lead tempLead;
 
         tempName = setName();
         tempPhoneNumber = setPhone();
         tempEmail = setEmail();
         tempCompanyName = setCompanyName();
 
-        tempLead = new Lead(tempName, tempPhoneNumber, tempEmail, tempCompanyName);
+        Lead lead = new Lead(tempName, tempPhoneNumber, tempEmail, tempCompanyName);
 
-        //Lead.addLead(tempLead);
-        //Lead.save();
+        allLeads.add(lead);
     }
 
     public static String setName() {
+        Scanner scanner = new Scanner(System.in);
         String name;
         boolean isThereFirstAndLastname;
         System.out.println("Please, enter lead's name and lastname:");
@@ -145,26 +123,24 @@ public class Menu {
                 System.out.println("Name must have at least 3 characters");
             } else if (name.matches(".*\\d.*")) {
                 System.out.println("Name cannot contain numbers");
-                ;
             } else if (!isThereFirstAndLastname) {
                 System.out.println("Please enter name and lastname separated by a space");
             } else {
                 break;
             }
         }
-
         System.out.println("The registered name is: " + name + "\n");
         return name;
     }
 
     // newLead() helper method with phone input validation
     public static String setPhone() {
+        Scanner scanner = new Scanner(System.in);
         String phone;
         System.out.println("Enter lead's phone number, should be 9 digits long:");
 
         while (true) {
             phone = scanner.nextLine();
-
             if (phone.length() != 9) {
                 System.out.println("Phone must be 9 digits long");
             } else if (phone.charAt(0) == '0') {
@@ -175,12 +151,14 @@ public class Menu {
                 break;
             }
         }
+
         System.out.println("The registered phone is: " + phone + "\n");
         return phone;
     }
 
     // newLead() helper method with email input validation
     public static String setEmail() {
+        Scanner scanner = new Scanner(System.in);
         String email;
         System.out.println("Enter lead's email address:");
 
@@ -202,6 +180,7 @@ public class Menu {
 
     // newLead() helper method with companyName input validation
     public static String setCompanyName() {
+        Scanner scanner = new Scanner(System.in);
         String companyName;
         System.out.println("Enter lead's company name:");
 
@@ -217,4 +196,6 @@ public class Menu {
         System.out.println("The registered company name is: " + companyName + "\n");
         return companyName;
     }
+
+
 }
