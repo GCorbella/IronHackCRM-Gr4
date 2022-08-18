@@ -14,7 +14,7 @@ public class Menu {
   //Scanner scanner = new Scanner(System.in); // Scanner for commands, login message and instructions
 
     //lists
-    static List<Lead> allLeads = new ArrayList<>(); //List of all the existing Leads.
+    public static List<Lead> allLeads = new ArrayList<>(); //List of all the existing Leads.
     static List<Account> allAccounts = new ArrayList<>(); //List of all the existing Accounts.
     static List<Opportunity> allOpportunities = new ArrayList<>(); //List of all the existing Opportunities.
 
@@ -81,9 +81,10 @@ public class Menu {
         System.out.println("Leads : ");
        // allLeads.forEach((n) -> System.out.println(allLeads));
         allLeads.forEach(System.out::println);
+
     }
 
-    public Lead findLeadById(int id) throws IllegalArgumentException {
+    public static Lead findLeadById(int id) throws IllegalArgumentException {
         for (Lead lead : allLeads) {
             if(lead.getId() == id) {
                 return lead;

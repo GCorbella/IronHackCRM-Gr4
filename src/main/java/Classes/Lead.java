@@ -3,7 +3,7 @@ package Classes;
 public class Lead {
 
     //counter used to attach a new unique ID for every object instantiated.
-    private int counter = 0;
+    private static int counter = 1;
     //attributes
     private int id;
     private String name;

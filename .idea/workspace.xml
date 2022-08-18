@@ -4,13 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3141209-6267-473d-ab25-a41d1d196e26" name="Changes" comment="">
+    <list default="true" id="d3141209-6267-473d-ab25-a41d1d196e26" name="Changes" comment="First Try">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AccountTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AccountTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Classes/Lead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Classes/Lead.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Menu/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ContactTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ContactTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/LeadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LeadTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/MenuTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MenuTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/OpportunityList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/OpportunityList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Classes/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Classes/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Classes/Lead.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Classes/Lead.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Menu/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Menu/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/ContactTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ContactTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/LeadTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/LeadTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/MenuTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/MenuTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/OpportunityList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/OpportunityList.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,44 +49,24 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/sara/IdeaProjects/test_project"
+    "last_opened_file_path": "C:/Users/sara/IdeaProjects/Exeptions"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.LeadTest">
-    <configuration name="LeadTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ContactTest">
+    <configuration name="ContactTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="IronHackCRM-Gr4" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LeadTest" />
+      <option name="MAIN_CLASS_NAME" value="ContactTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LeadTest.testSetCompanyLead" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LeadTest.TestCreateLead" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="IronHackCRM-Gr4" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="LeadTest" />
-      <option name="METHOD_NAME" value="testSetCompanyLead" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LeadTest.testSetEmailLead" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IronHackCRM-Gr4" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LeadTest" />
-      <option name="METHOD_NAME" value="testSetEmailLead" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LeadTest.testSetPhoneLead" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IronHackCRM-Gr4" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LeadTest" />
-      <option name="METHOD_NAME" value="testSetPhoneLead" />
+      <option name="METHOD_NAME" value="TestCreateLead" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -92,13 +82,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MenuTest.testIdNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IronHackCRM-Gr4" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MenuTest" />
+      <option name="METHOD_NAME" value="testIdNotFound" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MenuTest.testShowLeads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IronHackCRM-Gr4" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MenuTest" />
+      <option name="METHOD_NAME" value="testShowLeads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.LeadTest" />
+        <item itemvalue="JUnit.ContactTest" />
         <item itemvalue="JUnit.MenuTest.testFindLeadById" />
-        <item itemvalue="JUnit.LeadTest.testSetCompanyLead" />
-        <item itemvalue="JUnit.LeadTest.testSetPhoneLead" />
-        <item itemvalue="JUnit.LeadTest.testSetEmailLead" />
+        <item itemvalue="JUnit.MenuTest.testShowLeads" />
+        <item itemvalue="JUnit.MenuTest.testIdNotFound" />
+        <item itemvalue="JUnit.LeadTest.TestCreateLead" />
       </list>
     </recent_temporary>
   </component>
@@ -111,6 +121,36 @@
       <option name="presentableId" value="Default" />
       <updated>1660321244902</updated>
     </task>
+    <task id="LOCAL-00001" summary="First Try">
+      <created>1660837276882</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1660837276882</updated>
+    </task>
+    <task id="LOCAL-00002" summary="First Try">
+      <created>1660837303348</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1660837303348</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First Try" />
+    <option name="LAST_COMMIT_MESSAGE" value="First Try" />
   </component>
 </project>

@@ -5,9 +5,10 @@ import org.junit.jupiter.api.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class MenuTest {
@@ -16,64 +17,60 @@ public class MenuTest {
 
     @BeforeEach
     void setup(){
-
+        Lead lead1 = new Lead("Juan","684895932", "juan1234@test.com","Desatranques Jaen");
+        Lead lead2= new Lead("Jose","68340253","jose123@test.com","Ironhack");
+        Lead lead3 = new Lead("Maria","69492022", "mariantonia@test.com","Telefonica");
+        Menu.allLeads.add(lead1);
+        Menu.allLeads.add(lead2);
+        Menu.allLeads.add(lead3);
     }
 
     @AfterEach
     void tearDown(){
-
+    Menu.allLeads.clear();
     }
 
     @Test
-    @DisplayName("Should accept valid phone")
-    void setPhoneTest() {
-        System.setIn(new ByteArrayInputStream("999999999".getBytes()));
+    @DisplayName("Set a name to a lead")
+    void testSetNameLead(){
+        System.setIn(new ByteArrayInputStream("Pepito Perez".getBytes()));
+        String validName = Menu.setName();
+        assertEquals("Pepito Perez",validName);
+    }
+    @Test
+    @DisplayName("Set a phone to a lead")
+    void testSetPhoneLead(){
+        System.setIn(new ByteArrayInputStream("693848205".getBytes()));
         String validPhone = Menu.setPhone();
-        assertEquals("999999999", validPhone);
+        assertEquals("693848205",validPhone);
     }
-
-
     @Test
-    @DisplayName("Should accept valid company name")
-    void setCompanyNameTest() {
-        System.setIn(new ByteArrayInputStream("Burton Global".getBytes()));
-        String validCompanyName = Menu.setCompanyName();
-        assertEquals("Burton Global", validCompanyName);
+    @DisplayName("Set a email to a lead")
+    void testSetEmailLead() {
+        System.setIn(new ByteArrayInputStream("pepitoperez@test.com".getBytes()));
+        String validEmail = Menu.setEmail();
+        assertEquals("pepitoperez@test.com", validEmail);
     }
-
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public class MenuTest {
-   Lead lead1 = new Lead("Juan","684895932", "juan1234@test.com","Desatranques Jaen");
-   Lead lead2= new Lead("Jose","68340253","jose123@test.com","Ironhack");
-   Lead lead3 = new Lead("Maria","69492022", "mariantonia@test.com","Telefonica");
-
-
-
     @Test
-    @DisplayName("List all leads")
-    void testListAllLeads(){
-        List<Lead> allLeads= new ArrayList<>();
-        allLeads.add(lead1);
-        allLeads.add(lead2);
-        allLeads.add(lead3);
-        assertEquals(allLeads,List.of(lead1,lead2,lead3));
+    @DisplayName("Set a company to a lead")
+    void testSetCompanyLead() {
+        System.setIn(new ByteArrayInputStream("Ironhack".getBytes()));
+        String validCompany = Menu.setCompanyName();
+        assertEquals("Ironhack", validCompany);
     }
+
+
     @Test
     @DisplayName("Find a lead by his Id")
     void testFindLeadById(){
 
-        assertEquals(0,lead3.getId());
+    assertEquals(Menu.allLeads.get(0),Menu.findLeadById(1));
+
     }
+
     @Test
     @DisplayName("Throw exception ID not match with any lead")
     void testIdNotFound(){
-
+            assertThrows(IllegalArgumentException.class,()->Menu.findLeadById(-6));
     }
 }
