@@ -1,9 +1,11 @@
 package Classes;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Lead {
 
     //counter used to attach a new unique ID for every object instantiated.
-    private int counter = 0;
+    private static final AtomicInteger counter = new AtomicInteger(0);
     //attributes
     private int id;
     private String name;
@@ -13,7 +15,7 @@ public class Lead {
 
     //constructor
     public Lead(String name, String phoneNumber, String email, String companyName) {
-        setId(counter++); //this setter give the object instantiated a unique ID, counting the past ones.
+        id = counter.incrementAndGet(); //this setter give the object instantiated a unique ID, counting the past ones.
         setName(name);
         setPhoneNumber(phoneNumber);
         setEmail(email);

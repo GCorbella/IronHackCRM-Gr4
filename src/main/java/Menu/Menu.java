@@ -1,13 +1,18 @@
 package Menu;
 
 import Classes.Account;
+import Classes.Contact;
 import Classes.Lead;
 import Classes.Opportunity;
+import Enums.Status;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import java.util.Scanner;
+
+import static Enums.Industry.*;
+import static Enums.Product.*;
 
 public class Menu {
 
@@ -17,13 +22,13 @@ public class Menu {
     static List<Lead> allLeads = new ArrayList<>(); //List of all the existing Leads.
     static List<Account> allAccounts = new ArrayList<>(); //List of all the existing Accounts.
     static List<Opportunity> allOpportunities = new ArrayList<>(); //List of all the existing Opportunities.
+    static List<Contact> allContacts = new ArrayList<>(); //List of all the existing Contacts.
 
     public static void start() {
         String command;
         String actionCommand;
 
-        //TODO List of all commands. Add all comands
-        String[] commands = new String[]{"new lead", "show leads", "help", "quit"};
+        String[] commands = new String[]{"help","new lead", "show leads", "convert", "close-lost", "close-won","quit"};
         
         try {
             System.out.println("\r*** Welcome to CRM of Group 4***");
@@ -55,6 +60,25 @@ public class Menu {
                         System.out.println(c);
                     }
                     break;
+
+                case "convert":
+                    System.out.println("What's the Id of the Lead you want to convert?");
+                    int id = scanner.nextInt();
+                    convertLead(id);
+                    break;
+                case "close-lost":
+                    System.out.println("What's the Id of the Opportunity you want to close?");
+                    int id1 = scanner.nextInt();
+                    changeOpportunityStatus(id1, Status.CLOSED_LOST);
+                    System.out.println("Opportunity status set to CLOSED_LOST");
+                    break;
+                case "close-won":
+                    System.out.println("What's the Id of the Opportunity you want to close?");
+                    int id2 = scanner.nextInt();
+                    changeOpportunityStatus(id2, Status.CLOSED_WON);
+                    System.out.println("Opportunity status set to CLOSED_LOST");
+                    System.out.println("Congratulations!");
+                    break;
                 case "quit":
                     try {
                         System.out.println("Log out ...");
@@ -77,7 +101,7 @@ public class Menu {
         allLeads.forEach(System.out::println);
     }
 
-    public Lead findLeadById(int id) throws IllegalArgumentException {
+    public static Lead findLeadById(int id) throws IllegalArgumentException {
         for (Lead lead : allLeads) {
             if(lead.getId() == id) {
                 return lead;
@@ -191,5 +215,124 @@ public class Menu {
         return companyName;
     }
 
+    //this method is for convert lead to opportunity saving and create an account .
+    public static void convertLead(int id) {
+        Lead lead = findLeadById(id);
+        Scanner scanner = new Scanner(System.in);
 
+        Contact contact = new Contact(lead.getName(), lead.getPhoneNumber(), lead.getEmail(), lead.getCompanyName());
+        allContacts.add(contact);
+        System.out.println("In what product is the customer interested:" +"\n1.HYBRID" +"\n2.FLATBED"+"\n3.BOX");
+        int election = scanner.nextInt();
+        switch (election) {
+            case 1:
+                Opportunity opportunity =new Opportunity(HYBRID,contact, Status.OPEN);
+                break;
+            case 2:
+                Opportunity opportunity2 =new Opportunity(FLATBED,contact,Status.OPEN);
+
+                break;
+            case 3:
+                Opportunity opportunity3 =new Opportunity(BOX,contact,Status.OPEN);
+                break;
+            default:
+                System.out.println("INSERT CORRECT NUM");
+                break;
+        }
+
+        boolean salir = false;
+        System.out.println("Select the industry of the customer:"+"\n1.PRODUCE" +"\n2.ECOMMERCE"+"\n3.MANUFACTURING"+"\n4.MEDICAL" +"\n5.OTHER");
+        int employeeCount;
+        String city;
+        String country;
+        int election2 = scanner.nextInt();
+        switch (election2) {
+            case 1:
+                System.out.println("How many employees does have the customer business?");
+                employeeCount = scanner.nextInt();
+                System.out.println("In which city is located it's HQ?");
+                city = scanner.nextLine();
+                city = scanner.nextLine();
+
+                System.out.println("In which country operates?");
+                country = scanner.nextLine();
+                country = scanner.nextLine();
+
+                System.out.println("New account created");
+
+                Account account = new Account(PRODUCE, employeeCount, city, country);
+                break;
+
+            case 2:
+                System.out.println("How many employees does have the customer business?");
+                employeeCount = scanner.nextInt();
+                System.out.println("In what city is located it's HQ?");
+                city = scanner.nextLine();
+                city = scanner.nextLine();
+
+                System.out.println("In which country operates?");
+                country = scanner.nextLine();
+                country = scanner.nextLine();
+
+                System.out.println("New account create");
+                Account account2 = new Account(ECOMMERCE, employeeCount, city, country);
+                break;
+            case 3:
+                System.out.println("How many employees does have the customer business?");
+                employeeCount = scanner.nextInt();
+                System.out.println("In which city is located it's HQ?");
+                city = scanner.nextLine();
+                city = scanner.nextLine();
+
+                System.out.println("In which country operates?");
+                country = scanner.nextLine();
+                country = scanner.nextLine();
+
+                System.out.println("New account create");
+                Account account3 = new Account(MANUFACTURING, employeeCount, city, country);
+                break;
+            case 4:
+                System.out.println("How many employees does have the customer business?");
+                employeeCount = scanner.nextInt();
+                System.out.println("In which city is located it's HQ?");
+                city = scanner.nextLine();
+                city = scanner.nextLine();
+
+                System.out.println("In which country operates?");
+                country = scanner.nextLine();
+                country = scanner.nextLine();
+
+                System.out.println("New account create");
+                Account account4 = new Account(MEDICAL, employeeCount, city, country);
+                break;
+            case 5:
+                System.out.println("How many employees does have the customer business?");
+                employeeCount = scanner.nextInt();
+                System.out.println("In which city is located it's HQ?");
+                city = scanner.nextLine();
+                city = scanner.nextLine();
+
+                System.out.println("In which country operates?");
+                country = scanner.nextLine();
+                country = scanner.nextLine();
+
+                System.out.println("New account create");
+                Account account5 = new Account(OTHER, employeeCount, city, country);
+                break;
+
+            default:
+                System.out.println("Please, enter a valid option.");
+                break;
+        }
+        allLeads.remove(findLeadById(id));
+        }
+        // this method is for change opportunity status
+        public static void changeOpportunityStatus(int id, Status status){
+
+            for (int i = 0; i < allOpportunities.size(); i++) {
+                if (allOpportunities.get(i).getId() == id ){
+                    allOpportunities.get(i).setStatus(status);
+                }
+            }
+        }
 }

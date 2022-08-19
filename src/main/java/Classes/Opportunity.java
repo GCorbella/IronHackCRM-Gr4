@@ -3,10 +3,12 @@ package Classes;
 import Enums.Product;
 import Enums.Status;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Opportunity {
 
     //counter used to attach a new unique ID for every object instantiated.
-    private int counter = 0;
+    private static final AtomicInteger counter = new AtomicInteger(0);
     //attributes
     private int id;
     private Product product;
@@ -15,7 +17,7 @@ public class Opportunity {
 
     //constructor
     public Opportunity(Product product, Contact decisionMaker, Status status) {
-        setId(counter++); //this setter give the object instantiated a unique ID, counting the past ones.
+        id = counter.incrementAndGet(); //this setter give the object instantiated a unique ID, counting the past ones.
         setProduct(product);
         setDecisionMaker(decisionMaker);
         setStatus(status);
