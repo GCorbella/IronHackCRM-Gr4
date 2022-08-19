@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    static Scanner scanner = new Scanner(System.in); // Scanner for commands, login message and instructions
+  //Scanner scanner = new Scanner(System.in); // Scanner for commands, login message and instructions
 
     //lists
     static List<Lead> allLeads = new ArrayList<>(); //List of all the existing Leads.
@@ -38,6 +38,7 @@ public class Menu {
 
         // Command loop: asks for valid input and assigns id to variable if necessary
         while (true) {
+            Scanner scanner = new Scanner(System.in);
             System.out.println("\nPlease, type a command:");
             command = scanner.nextLine().toLowerCase();
 
@@ -75,8 +76,8 @@ public class Menu {
 
     }
 
-    //TODO
-    static void showLeads(){
+
+    public static void showLeads(){
         System.out.println("Leads : ");
        // allLeads.forEach((n) -> System.out.println(allLeads));
         allLeads.forEach(System.out::println);
@@ -109,6 +110,7 @@ public class Menu {
     }
 
     public static String setName() {
+        Scanner scanner = new Scanner(System.in);
         String name;
         boolean isThereFirstAndLastname;
         System.out.println("Please, enter lead's name and lastname:");
@@ -133,12 +135,12 @@ public class Menu {
 
     // newLead() helper method with phone input validation
     public static String setPhone() {
+        Scanner scanner = new Scanner(System.in);
         String phone;
         System.out.println("Enter lead's phone number, should be 9 digits long:");
 
         while (true) {
             phone = scanner.nextLine();
-
             if (phone.length() != 9) {
                 System.out.println("Phone must be 9 digits long");
             } else if (phone.charAt(0) == '0') {
@@ -149,12 +151,14 @@ public class Menu {
                 break;
             }
         }
+
         System.out.println("The registered phone is: " + phone + "\n");
         return phone;
     }
 
     // newLead() helper method with email input validation
     public static String setEmail() {
+        Scanner scanner = new Scanner(System.in);
         String email;
         System.out.println("Enter lead's email address:");
 
@@ -176,6 +180,7 @@ public class Menu {
 
     // newLead() helper method with companyName input validation
     public static String setCompanyName() {
+        Scanner scanner = new Scanner(System.in);
         String companyName;
         System.out.println("Enter lead's company name:");
 
@@ -191,4 +196,6 @@ public class Menu {
         System.out.println("The registered company name is: " + companyName + "\n");
         return companyName;
     }
+
+
 }
