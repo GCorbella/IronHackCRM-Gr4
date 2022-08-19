@@ -20,6 +20,11 @@ public class Lead {
         setCompanyName(companyName);
     }
 
+    @Override //method toString override to show the info by terminal
+    public String toString(){
+        return getId() + "//" + getName() + "//" + getPhoneNumber() + "//" + getEmail() + "//" + getCompanyName() + ".";
+    }
+
     //setters
     public void setId(int id) {
         this.id = id;
@@ -61,10 +66,5 @@ public class Lead {
     public String getCompanyName() {
         return companyName;
     }
-
-    public String toString(){
-        return getId() + "//" + getName() + "//" + getPhoneNumber() + "//" + getEmail() + "//" + getCompanyName() + ".";
-    }
-
 }
 
