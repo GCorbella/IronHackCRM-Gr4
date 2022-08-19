@@ -71,12 +71,6 @@ public class Menu {
         }
     }
 
-    //TODO
-    void createLead(String fullName, String phoneNumber, String email, String companyName){
-
-    }
-
-
     public static void showLeads(){
         System.out.println("Leads : ");
        // allLeads.forEach((n) -> System.out.println(allLeads));
